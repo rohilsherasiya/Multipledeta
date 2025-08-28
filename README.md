@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -14,22 +13,21 @@
     body {
       background: linear-gradient(to right, #70f0d5, #6dbae6);
       margin: 0;
-      padding: 15px;
+      padding: 20px;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 800px;
       margin: auto;
       background: linear-gradient(to right, #f4de5e, #c5e34f);
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     h2 {
       text-align: center;
       margin-bottom: 20px;
-      font-size: 24px;
     }
 
     input[type="text"],
@@ -40,19 +38,19 @@
       margin-bottom: 12px;
       border: 1px solid #ccc;
       border-radius: 5px;
-      font-size: 15px;
+      font-size: 16px;
     }
 
     .works {
       background: linear-gradient(to right, #ea4a22, #66fe07, #f46c05);
       height: 40px;
-      width: 200px;
+      width: 60%;
       border-radius: 20px;
       margin: auto;
       text-align: center;
       color: #fff;
       line-height: 40px;
-      font-weight: bold;
+      font-size: 18px;
     }
 
     .password-box {
@@ -79,33 +77,29 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
     }
 
     button[type="submit"]:hover {
       background: linear-gradient(to right, #fa8343, #86a1eb, #59a133);
     }
 
-    table {
+    .table-wrapper {
       width: 100%;
+      overflow-x: auto; /* 📱 Scroll on mobile */
       margin-top: 20px;
-      border-collapse: collapse;
-      overflow-x: auto;
-      display: block;
     }
 
-    table,
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px; /* Table readable on small screens */
+    }
+
     th,
     td {
       border: 1px solid #ccc;
-    }
-
-    th,
-    td {
       padding: 10px;
       text-align: center;
-      font-size: 14px;
-      word-break: break-word;
     }
 
     .action-btn {
@@ -115,7 +109,7 @@
       border-radius: 5px;
       cursor: pointer;
       color: #fff;
-      font-size: 13px;
+      font-size: 14px;
     }
 
     .edit-btn {
@@ -127,43 +121,21 @@
     }
 
     /* 📱 Responsive Design */
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
       .container {
         padding: 15px;
       }
 
-      h2 {
-        font-size: 20px;
+      h2.works {
+        width: 100%;
+        font-size: 16px;
       }
 
       input,
-      button {
-        font-size: 14px;
-      }
-
-      table {
-        font-size: 12px;
-      }
-
-      th,
-      td {
-        padding: 6px;
-      }
-
-      .action-btn {
-        padding: 4px 8px;
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .works {
-        width: 150px;
-        font-size: 14px;
-        height: 35px;
-        line-height: 35px;
-      }
-
       button[type="submit"] {
         font-size: 14px;
         padding: 10px;
@@ -171,7 +143,13 @@
 
       th,
       td {
-        font-size: 11px;
+        font-size: 13px;
+        padding: 6px;
+      }
+
+      .action-btn {
+        padding: 4px 8px;
+        font-size: 12px;
       }
     }
   </style>
@@ -197,31 +175,33 @@
         <label>Gender:</label><br>
         <input type="radio" name="gender" value="Male"> Male
         <input type="radio" name="gender" value="Female"> Female
-      </div>
+      </div><br>
 
       <div class="hobby">
         <label>Hobby:</label><br>
         <input type="checkbox" value="Study"> Study
         <input type="checkbox" value="Traveling"> Traveling
         <input type="checkbox" value="Sports"> Sports
-      </div>
+      </div><br>
 
       <button type="submit">Add</button>
     </form>
 
-    <table id="todoTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th>Gender</th>
-          <th>Hobbies</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div class="table-wrapper">
+      <table id="todoTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Gender</th>
+            <th>Hobbies</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </div>
 
   <script>
@@ -240,7 +220,7 @@
     setInterval(() => {
       words.style.background = Events[index];
       index = (index + 1) % Events.length;
-    }, 2000); // 2 sec
+    }, 1000);
   </script>
 
   <script>
